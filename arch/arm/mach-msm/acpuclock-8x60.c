@@ -47,7 +47,7 @@
 #define L_VAL_SCPLL_CAL_MIN	0x08 /* =  432 MHz with 27MHz source */
 
 #ifdef CONFIG_OC_ULTIMATE
-#define FREQ_TABLE_SIZE    33 
+#define FREQ_TABLE_SIZE    34 
 #else
 #define FREQ_TABLE_SIZE    27 
 #endif
@@ -203,9 +203,10 @@ static struct clkctl_l2_speed l2_freq_tbl_v2[] = {
 #define L2(x) (&l2_freq_tbl_v2[(x)])
 /* SCPLL frequencies = 2 * 27 MHz * L_VAL */
 static struct clkctl_acpu_speed acpu_freq_tbl_1188mhz[] = {
-  { {1, 1},  192000,  ACPU_PLL_8, 3, 1, 0, 0,    L2(1),   812500, 0x03006000},
+  { {1, 1},  30000,  ACPU_PLL_8, 3, 1, 0, 0,    L2(0),   800000, 0x03006000},
   /* MAX_AXI row is used to source CPU cores and L2 from the AFAB clock. */
   { {0, 0},  MAX_AXI, ACPU_AFAB,  1, 0, 0, 0,    L2(0),   875000, 0x03006000},
+  { {1, 1},  192000,  ACPU_PLL_8, 3, 1, 0, 0,    L2(1),   812500, 0x03006000},
   { {1, 1},  384000,  ACPU_PLL_8, 3, 0, 0, 0,    L2(1),   875000, 0x03006000},
   { {1, 1},  432000,  ACPU_SCPLL, 0, 0, 1, 0x08, L2(1),   887500, 0x03006000},
   { {1, 1},  486000,  ACPU_SCPLL, 0, 0, 1, 0x09, L2(2),   912500, 0x03006000},
